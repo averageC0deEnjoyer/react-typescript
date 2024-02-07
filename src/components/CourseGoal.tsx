@@ -1,20 +1,33 @@
 import { type ReactNode } from 'react';
 
-type CourseGoalProps = {
+type PropsType = {
   title: string;
   children: ReactNode;
+  handleDeleteGoal: (a: number) => void;
+  goalId: number;
 };
 
-// type CourseGoalProps = PropsWithChildren<{ title: string }>;
+// type PropsType = PropsWithChildren<{ title: string }>;
 
-const CourseGoal = ({ title, children }: CourseGoalProps) => {
+const CourseGoal = ({
+  title,
+  children,
+  handleDeleteGoal,
+  goalId,
+}: PropsType) => {
   return (
     <article>
       <div>
         <h2>{title}</h2>
         {children}
       </div>
-      <button>DELETE</button>
+      <button
+        onClick={() => {
+          handleDeleteGoal(goalId);
+        }}
+      >
+        DELETE
+      </button>
     </article>
   );
 };
